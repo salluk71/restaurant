@@ -7,16 +7,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 export default class App extends Component {
   render() {
-    const Teams = () => {
-      return "Teams";
-    };
     return (
       <Router>
         <Header></Header>
         <Switch>
           <Route exact path="/" component={Home}></Route>
-          <Route exact path="/about" component={About}></Route>
-          <Route exact path="/about/team" component={Teams}></Route>
+          <Route path="/about" component={About}></Route>
         </Switch>
         <Footer></Footer>
       </Router>
