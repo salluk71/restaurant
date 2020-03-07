@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import jQuery from "jquery";
@@ -36,9 +36,9 @@ export default class Header extends Component {
               <div className="row">
                 <div className="col-lg-2 col-md-3 col-sm-6">
                   <div className="logo">
-                    <NavLink exact to="/">
+                    <Link to="/">
                       <img src={LOGO} alt="" />
-                    </NavLink>
+                    </Link>
                   </div>
                 </div>
                 <div className="col-lg-10 col-md-9 col-sm-6">
@@ -48,19 +48,19 @@ export default class Header extends Component {
                         <div className="menu">
                           <ul>
                             <li>
-                              <NavLink to="/">Home</NavLink>
+                              <Link to="/">Home</Link>
                             </li>
                             <li>
-                              <NavLink to="/about">about</NavLink>
+                              <Link to="/about">about js</Link>
                             </li>
                             <li>
-                              <NavLink to="/gallery">gallery</NavLink>
+                              <Link to="/gallery">gallery</Link>
                             </li>
                             <li>
-                              <NavLink to="/blog">blog</NavLink>
+                              <Link to="/blog">blog</Link>
                             </li>
                             <li>
-                              <NavLink to="/contact">contact</NavLink>
+                              <Link to="/contact">contact</Link>
                             </li>
                           </ul>
                         </div>
