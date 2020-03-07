@@ -1,21 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
 import "../assets/css/core.css";
 import "../assets/css/style.css";
-// import "../../node_modules/timecircles/inc/TimeCircles.css";
-// import "../../node_modules/timecircles/inc/TimeCircles.js";
-// import "../assets/js/jquery.magnific-popup.js";
-// import "../assets/js/jquery.counterup.min.js";
-// import "../assets/js/waypoints.min.js";
-// import "../assets/js/style-customizer.js";
-// import "../assets/js/plugins.js";
-// import "../assets/js/timecircles.js";
-// import "../assets/js/main.js";
-
 import LOGO from "../assets/images/logo/logo.png";
+import { Link } from "react-router-dom";
 export default class Header extends Component {
   render() {
     return (
@@ -51,7 +40,7 @@ export default class Header extends Component {
                               <Link to="/">Home</Link>
                             </li>
                             <li>
-                              <Link to="/about">about jssss</Link>
+                              <Link to="/about">about</Link>
                             </li>
                             <li>
                               <Link to="/gallery">gallery edede</Link>
