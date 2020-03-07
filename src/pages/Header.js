@@ -51,7 +51,7 @@ export default class Header extends Component {
                               <Link to="/">Home</Link>
                             </li>
                             <li>
-                              <Link to="/about">about js</Link>
+                              <Link to="/about">about jssss</Link>
                             </li>
                             <li>
                               <Link to="/gallery">gallery</Link>
