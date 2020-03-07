@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import jQuery from "jquery";
+
 import "../assets/css/core.css";
 import "../assets/css/style.css";
 // import "../../node_modules/timecircles/inc/TimeCircles.css";
@@ -54,7 +54,7 @@ export default class Header extends Component {
                               <Link to="/about">about jssss</Link>
                             </li>
                             <li>
-                              <Link to="/gallery">gallery</Link>
+                              <Link to="/gallery">gallery edede</Link>
                             </li>
                             <li>
                               <Link to="/blog">blog</Link>
