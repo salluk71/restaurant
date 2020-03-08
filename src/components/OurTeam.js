@@ -22,7 +22,12 @@ export default class OurTeam extends Component {
     //     });
     //   });
 
-    fetch(url)
+    fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
       .then(res => res.json())
       .then(response => {
         console.log(response);
