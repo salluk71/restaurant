@@ -32,7 +32,7 @@ export default class Header extends Component {
                 </div>
                 <div className="col-lg-10 col-md-9 col-sm-6">
                   <div className="mgea-full-width">
-                    <div className="header-right">
+                    <div className="header-right justify-content-end">
                       <div className="header-menu d-none d-lg-block">
                         <div className="menu">
                           <ul>
@@ -42,12 +42,12 @@ export default class Header extends Component {
                             <li>
                               <Link to="/about">about</Link>
                             </li>
-                            <li>
-                              <Link to="/gallery">gallery edede</Link>
+                            {/* <li>
+                              <Link to="/gallery">gallery</Link>
                             </li>
                             <li>
                               <Link to="/blog">blog</Link>
-                            </li>
+                            </li> */}
                             <li>
                               <Link to="/contact">contact</Link>
                             </li>

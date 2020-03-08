@@ -30,6 +30,7 @@ import Gallery6 from "../assets/images/gallery/6.jpg";
 
 export default class Home extends Component {
   render() {
+    console.log(this.props.popular_dishes);
     return (
       <>
         <div className="slider-container">
@@ -62,7 +63,7 @@ export default class Home extends Component {
                   <h2 className="title_1">About Fida Restaurant </h2>
                   <h3 className="title_2">
                     Vestibulum quis elit eget neque porttitor no amet dolor.
-                    Proin pretiumss.{" "}
+                    Proin pretiumss.
                   </h3>
                   <p className="text1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -75,7 +76,7 @@ export default class Home extends Component {
                     euismod. Suspendisse potenti. Nulla eros dost mauris,
                     convallis et sem tempus, viverra hendrerit sapien Lorem
                     amet, consectetur adipiscing elit. Donec aliquet dolor
-                    libero,{" "}
+                    libero,
                   </p>
                   <div className="read-more">
                     <a href="index.html#">read more</a>
@@ -98,7 +99,6 @@ export default class Home extends Component {
                   <div className="section-title text-center grey_bg">
                     <h2>Our Popular Dishes</h2>
                     <p>
-                      {" "}
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim ad minim nostrud exercitation ullamco
