@@ -2,6 +2,7 @@ import React from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import { Link } from "react-router-dom";
 export default class GetRestaurants extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +32,10 @@ export default class GetRestaurants extends React.Component {
                   isFound: true
                 });
               } else {
+                this.setState({
+                  isLoading: false,
+                  isFound: false
+                });
               }
             });
         }
@@ -48,7 +53,15 @@ export default class GetRestaurants extends React.Component {
     if (this.state.isLoading) {
       return (
         <>
-          <div className="text-center">Getting Restaurant in your area</div>
+          <div className="preloader">
+            <div className="loading-center">
+              <div className="loading-center-absolute">
+                <div className="object object_one"></div>
+                <div className="object object_two"></div>
+                <div className="object object_three"></div>
+              </div>
+            </div>
+          </div>
         </>
       );
     }
@@ -66,19 +79,19 @@ export default class GetRestaurants extends React.Component {
           <div style={{ height: "600px" }}>
             <div className="single-disesh">
               <div className="disesh-img">
-                <a href={"restautant/" + value.restaurant.R.res_id}>
+                <Link to={"/" + value.restaurant.R.res_id}>
                   <img
                     style={{ maxHeight: "400px" }}
                     src={value.restaurant.featured_image}
                     alt=""
                   />
-                </a>
+                </Link>
               </div>
               <div className="disesh-desc pt-50">
                 <h3>
-                  <a href={"restautant/" + value.restaurant.R.res_id}>
+                  <Link to={"/" + value.restaurant.R.res_id}>
                     {value.restaurant.name}
-                  </a>
+                  </Link>
                 </h3>
                 <p className="">{value.restaurant.location.address}</p>
               </div>

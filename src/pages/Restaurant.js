@@ -1,11 +1,92 @@
 import React, { Component } from "react";
-import AboutImg from "../assets/images/about/about.jpg";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 import Choose from "../assets/images/choose/choose.jpg";
 import OurTeam from "../components/OurTeam";
 
-export default class About extends Component {
+export default class Restaurant extends Component {
+  state = {
+    data: null,
+    isLoading: true,
+    found: false,
+    review: null
+  };
+
+  componentDidMount() {
+    const res_id = this.props.match.params.restaurant;
+    const url = `https://developers.zomato.com/api/v2.1/restaurant?res_id=${res_id}&apikey=ff018d21a18d50daf11afe8f048a6cad`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        if (data != null) {
+          this.setState({
+            data: data,
+            isLoading: false,
+            found: true
+          });
+        }
+      });
+
+    const review = `https://developers.zomato.com/api/v2.1/reviews?res_id=${res_id}&start=0&count=100&apikey=ff018d21a18d50daf11afe8f048a6cad`;
+    fetch(review)
+      .then(res2 => res2.json())
+      .then(data2 => {
+        if (data2.reviews_count) {
+          this.setState({
+            review: data2.user_reviews
+          });
+        }
+      });
+  }
+
   render() {
-    console.log(this.props);
+    if (this.state.review) {
+      var userreview = this.state.review.map((item, index) => {
+        return (
+          <div className="single-choose" key={index}>
+            <img
+              className="img-thumbnail img-fluid w-25 mx-auto"
+              src={item.review.user.profile_image}
+              alt={1}
+            />
+            <h5>{item.review.user.name}</h5>
+            <p>{item.review.review_text}</p>
+          </div>
+        );
+      });
+    } else {
+      return (
+        <>
+          <div className="preloader">
+            <div className="loading-center">
+              <div className="loading-center-absolute">
+                <div className="object object_one"></div>
+                <div className="object object_two"></div>
+                <div className="object object_three"></div>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
+    if (this.state.isLoading) {
+      return (
+        <>
+          <div className="preloader">
+            <div className="loading-center">
+              <div className="loading-center-absolute">
+                <div className="object object_one"></div>
+                <div className="object object_two"></div>
+                <div className="object object_three"></div>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
     return (
       <>
         <div className="breadcrubs">
@@ -13,15 +94,7 @@ export default class About extends Component {
             <div className="row">
               <div className="col-lg-12">
                 <div className="breadcurbs-inner text-center">
-                  <h3 className="breadcrubs-title">about us</h3>
-                  <ul>
-                    <li>
-                      <a href="index.html">
-                        home <span>//</span>
-                      </a>
-                    </li>
-                    <li>about us</li>
-                  </ul>
+                  <h3 className="breadcrubs-title">{this.state.data.name}</h3>
                 </div>
               </div>
             </div>
@@ -64,13 +137,14 @@ export default class About extends Component {
                     </div>
                   </div>
                   <div className="about-rest-img">
-                    <img src={AboutImg} alt="" />
+                    <img src={this.state.data.featured_image} alt="" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div className="fun-factor ptb-100 text-center">
           <div className="container">
             <div className="row">
@@ -121,15 +195,15 @@ export default class About extends Component {
             </div>
           </div>
         </div>
+
         <div className="choose-us">
           <div className="choose-us-top pt-100">
             <div className="container">
               <div className="row">
                 <div className="col-lg-8 offset-lg-2">
                   <div className="section-title white_bg mb-50 text-center">
-                    <h2>Why Choose Us ?</h2>
+                    <h2>User Review</h2>
                     <p>
-                      {" "}
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim ad minim nostrud exercitation ullamco
@@ -149,51 +223,14 @@ export default class About extends Component {
           </div>
           <div className="choose-us-desc grey-bg text-center">
             <div className="container">
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="single-choose">
-                    <a href="about-us.html#">
-                      <i className="fa fa-heart"></i>
-                    </a>
-                    <h5>clean environment</h5>
-                    <p>
-                      Lorem ipsoms ipsum dolor sit amet, consectetur adipisicing
-                      elit, sed do eiusmod incididunt ut labore dolore lorem
-                      ipsomes.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="single-choose">
-                    <a href="about-us.html#">
-                      <i className="mdi mdi-human-male-female"></i>
-                    </a>
-                    <h5>clean environment</h5>
-                    <p>
-                      Lorem ipsoms ipsum dolor sit amet, consectetur adipisicing
-                      elit, sed do eiusmod incididunt ut labore dolore lorem
-                      ipsomes.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="single-choose">
-                    <a href="about-us.html#">
-                      <i className="fa fa-heart"></i>
-                    </a>
-                    <h5>clean environment</h5>
-                    <p>
-                      Lorem ipsoms ipsum dolor sit amet, consectetur adipisicing
-                      elit, sed do eiusmod incididunt ut labore dolore lorem
-                      ipsomes.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <OwlCarousel items={2} loop margin={30} nav>
+                {userreview}
+              </OwlCarousel>
             </div>
           </div>
         </div>
-        <OurTeam></OurTeam>
+
+        <OurTeam teams={this.state.data.photos}></OurTeam>
       </>
     );
   }

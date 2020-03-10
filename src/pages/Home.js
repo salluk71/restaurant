@@ -28,7 +28,6 @@ import Gallery6 from "../assets/images/gallery/6.jpg";
 
 export default class Home extends Component {
   render() {
-    console.log(this.props.popular_dishes);
     return (
       <>
         <div className="slider-container">
