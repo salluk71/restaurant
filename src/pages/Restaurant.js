@@ -41,6 +41,7 @@ export default class Restaurant extends Component {
   }
 
   render() {
+    console.log(this.state.data);
     if (this.state.review) {
       var userreview = this.state.review.map((item, index) => {
         return (

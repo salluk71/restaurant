@@ -50,6 +50,7 @@ export default class GetRestaurants extends React.Component {
   }
 
   render() {
+    console.log(this.state.data);
     if (this.state.isLoading) {
       return (
         <>
